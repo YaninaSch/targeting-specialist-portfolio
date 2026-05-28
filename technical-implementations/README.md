@@ -4,29 +4,29 @@ This section showcases SQL query development, automation solutions, and data pip
 
 ## Featured Technical Projects
 
-### 1. [GCP BigQuery Customer Segmentation Engine](./gcp-bigquery-segmentation-engine.md)
-**Technology Stack**: Google Cloud Platform, BigQuery, SQL, GCP Data Pipeline Automation  
+### 1. GCP BigQuery Customer Segmentation Engine
+**Technology Stack**: Google Cloud Platform, BigQuery, SQL
 **Challenge**: Create scalable customer segmentation for multi-million record datasets on GCP infrastructure  
 **Solution**: Optimized BigQuery architecture with partitioned tables, clustered indexes, and performance tuning  
-**Impact**: 75% reduction in query execution time, 60% cost optimization, enabling real-time campaign targeting
+**Impact**: Improved query efficiency and reduced campaign processing costs
 
-### 2. [Production Pipeline Integration](./production-pipeline-integration.md) 
+### 2. Production Pipeline Integration
 **Technology Stack**: SourceTree, Git Version Control, Airflow, YAML, GCP BigQuery, SFTP, Salesforce Marketing Cloud  
 **Challenge**: Integrate complex targeting queries into existing production pipeline infrastructure  
 **Solution**: SourceTree-managed Git workflow with Airflow job configuration, automated CSV generation, and SFTP integration  
 **Impact**: Seamless integration with production systems, reliable daily execution, zero data quality issues
 
-### 3. [Multi-Market Compliance Engine](./compliance-automation.md)
+### 3. Multi-Market Compliance Engine
 **Technology Stack**: SQL, Regulatory Data Management, Geographic Targeting  
 **Challenge**: Ensure automatic compliance with regional marketing regulations  
 **Solution**: Dynamic compliance checking with partner suppression logic  
 **Impact**: 100% regulatory compliance, zero violations across 15+ markets
 
-### 4. [Campaign Investigation & Optimization](./campaign-investigation.md)
+### 4. Campaign Investigation & Optimization
 **Technology Stack**: Data Analysis, SQL Investigation, Performance Optimization  
 **Challenge**: Investigate and resolve campaign performance anomalies  
 **Solution**: Systematic data analysis with root cause identification  
-**Impact**: Identified and resolved performance issues improving campaign effectiveness by 30%
+**Impact**: Identified and resolved performance issues improving campaign effectiveness
 
 ---
 
@@ -36,12 +36,11 @@ This section showcases SQL query development, automation solutions, and data pip
 - **Google Cloud Platform (GCP)**: Full-stack cloud data solutions, infrastructure management
 - **BigQuery**: Advanced SQL development, query optimization, data modeling, partition strategies
 - **Performance Tuning**: Query execution optimization, slot management, cost optimization, temporal tables
-- **Data Pipeline**: GCP data pipeline automation, ETL processes, data quality validation, real-time data flows
 - **Statistical Analysis**: A/B testing, significance testing, performance measurement
 
 ### Marketing Technology
 - **Campaign Automation**: Recurring query execution, dynamic targeting logic
-- **Experimentation Platform**: Variant assignment, exposure tracking, statistical controls
+- **Experimentation Platform**: Variant assignment, exposure tracking
 - **Email Marketing**: Salesforce Marketing Cloud integration, audience management
 - **Compliance Management**: Regulatory requirement implementation, opt-in validation
 
@@ -59,10 +58,10 @@ This section showcases SQL query development, automation solutions, and data pip
 ## Technical Achievements
 
 ### Performance Optimization
-- **Query Efficiency**: 75% average improvement in execution time through optimization
+- **Query Efficiency**: improvement in execution time through optimization
 - **Scalability**: Solutions handle 10M+ customer records with sub-minute performance
 - **Resource Management**: Efficient BigQuery slot utilization and cost optimization
-- **Automation**: Self-executing queries reduce manual intervention by 85%
+- **Automation**: Self-executing queries reduce manual intervention
 
 ### Quality & Reliability  
 - **Data Accuracy**: 99.9% targeting accuracy through comprehensive validation
@@ -71,8 +70,7 @@ This section showcases SQL query development, automation solutions, and data pip
 - **Compliance**: Zero regulatory violations through systematic validation
 
 ### Innovation & Efficiency
-- **Framework Development**: Reusable templates reduce development time by 60%
-- **Process Automation**: End-to-end campaign automation from targeting to deployment
+- **Framework Development**: Reusable templates streamline development
 - **Cross-Platform Integration**: Seamless data flow between marketing and analytics systems
 - **Knowledge Sharing**: Documented best practices and technical standards
 
@@ -83,27 +81,27 @@ This section showcases SQL query development, automation solutions, and data pip
 -- Customer lifecycle and behavioral targeting
 WITH customer_segments AS (
   SELECT 
-    customer_id,
+    license_id,
     email,
     product_sku,
     subscription_status,
     days_to_renewal,
     marketing_flags,
     engagement_score,
-    ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY last_updated DESC) as rn
+    ROW_NUMBER() OVER (PARTITION BY license_id ORDER BY last_updated DESC) as rn
   FROM `project.dataset.customer_data`
   WHERE subscription_status = 'Active'
     AND email IS NOT NULL
     AND marketing_opt_in = TRUE
 ),
 exclusion_logic AS (
-  SELECT customer_id 
+  SELECT license_id 
   FROM `project.dataset.campaign_exclusions`
   WHERE campaign_type IN ('reactivation', 'winback')
     AND exclusion_end_date > CURRENT_DATE()
 )
 SELECT 
-  cs.customer_id,
+  cs.license_id,
   cs.email,
   cs.product_sku,
   CASE 
@@ -114,48 +112,8 @@ SELECT
 FROM customer_segments cs
 LEFT JOIN exclusion_logic el ON cs.customer_id = el.customer_id
 WHERE cs.rn = 1
-  AND el.customer_id IS NULL
-  AND cs.engagement_score > 0.3
-```
+  AND el.license_id IS NULL
 
-### API Integration Pattern
-```python
-# Campaign deployment automation
-import requests
-import json
-from datetime import datetime
-
-class CampaignDeployment:
-    def __init__(self, api_key, base_url):
-        self.api_key = api_key
-        self.base_url = base_url
-        
-    def deploy_campaign(self, campaign_config):
-        """Deploy campaign with error handling and validation"""
-        try:
-            # Validate audience size
-            audience_size = self.validate_audience(campaign_config['targeting'])
-            
-            if audience_size < campaign_config['min_audience']:
-                raise ValueError(f"Audience too small: {audience_size}")
-                
-            # Deploy to experimentation platform
-            exp_response = self.create_experiment(campaign_config)
-            
-            # Deploy templates
-            template_response = self.deploy_templates(campaign_config)
-            
-            # Setup monitoring
-            self.setup_monitoring(campaign_config, exp_response['experiment_id'])
-            
-            return {
-                'status': 'success',
-                'experiment_id': exp_response['experiment_id'],
-                'deployment_time': datetime.now().isoformat()
-            }
-            
-        except Exception as e:
-            return {'status': 'error', 'message': str(e)}
 ```
 
 ## Platform Integrations
@@ -237,4 +195,4 @@ tasks:
 
 ---
 
-*This portfolio demonstrates deep technical expertise in database management, marketing automation, and large-scale campaign deployment systems.*
+*This portfolio demonstrates technical expertise in database management, marketing automation, and large-scale campaign deployment systems.*
