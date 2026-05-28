@@ -1,6 +1,6 @@
 # Yanina Scholz - Targeting Specialist Portfolio
 
-**Email Development Team Specialist | BigQuery | Email Campaign Targeting | Email A/B Testing | Email Marketing Automation**
+**Email Development Team Specialist | BigQuery | Email Campaign Targeting | Email A/B Testing**
 
 ---
 
