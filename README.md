@@ -27,8 +27,6 @@ Experimental campaign designs and statistical analysis methodologies.
 ### 💻 [Technical Implementations](./technical-implementations/)
 SQL queries, automation scripts, and data pipeline solutions.
 
-### 📊 [Campaign Analysis](./campaign-analysis/)
-Performance analysis, optimization insights, and business impact metrics.
 
 ---
 
