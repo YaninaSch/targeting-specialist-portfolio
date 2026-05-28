@@ -27,7 +27,7 @@ CREATE OR REPLACE TABLE
 SELECT
   email_address as email, 
   locale, 
-  customer_id as customer_id,
+  license_id as psn,
   account_guid as guid,
   renew_count,
   seat_count,
