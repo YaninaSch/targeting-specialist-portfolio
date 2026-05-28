@@ -1,6 +1,6 @@
 # Yanina Scholz - Targeting Specialist Portfolio
 
-**Email Development Team Specialist | BigQuery | Email Campaign Targeting | Email A/B Testing**
+**Email Development Team Specialist | BigQuery | SFMC | Email Campaign Targeting | Email A/B Testing**
 
 ---
 
@@ -12,7 +12,6 @@ I'm a Targeting Specialist from an **Email Development Team** with expertise in 
 - **Email Campaign Development**: Advanced email targeting logic, subscriber segmentation, and email campaign optimization
 - **Google Cloud Platform (GCP) & BigQuery**: Advanced SQL development for email targeting, subscriber data analysis, and email campaign performance
 - **Email Production Pipeline**: Working within established email campaign infrastructure using Airflow, YAML, and SFTP integration
-- **Email Analytics**: Email subscriber behavior analysis, email performance metrics, and predictive email targeting
 - **Email Compliance**: Multi-market email marketing regulations (GDPR, CAN-SPAM, etc.)
 
 ---
@@ -64,7 +63,7 @@ Performance analysis, optimization insights, and business impact metrics.
 |--------------|------------------|
 | **Cloud & Data** | **Google Cloud Platform (GCP)**, **BigQuery**, SQL, Data Warehousing, ETL Pipelines |
 | **Development Tools** | **SourceTree**, **Git Version Control**, **Airflow**, YAML Configuration, SFTP Integration |
-| **Email Marketing Tech** | **Salesforce Marketing Cloud (SFMC)**, Email Data Extensions, **Email Operations**, Email Automation |
+| **Email Marketing Tech** | **Salesforce Marketing Cloud (SFMC)**, Email Data Extensions, **Email Operations** |
 | **Analytics** | A/B Testing, Statistical Analysis, Performance Optimization |
 | **Tools** | Jira, Version Control, Marketing Automation Platforms |
 | **Compliance** | GDPR, Regional Marketing Regulations, Partner Agreements |
@@ -73,8 +72,8 @@ Performance analysis, optimization insights, and business impact metrics.
 
 ## Professional Experience
 
-**Targeting Specialist** | Email Development Team | Trust-Based Solutions Division
-- Design and implement complex customer targeting logic for **email campaigns** across multiple security product brands using **Google Cloud Platform (GCP)**
+**Targeting Specialist** | Email Development Team 
+- Design and implement complex customer targeting logic for **email campaigns** across multiple cybersecurity product brands using **Google Cloud Platform (GCP)**
 - Develop advanced **BigQuery SQL** queries processing millions of email subscribers with sub-second performance for **email marketing campaigns**
 - Work within established **email campaign infrastructure** using **SourceTree/Git**, **Airflow**, and **YAML** configurations for production email deployment
 - Integrate email targeting systems with **Salesforce Marketing Cloud** via **SFTP** data extensions for **email campaign execution**
