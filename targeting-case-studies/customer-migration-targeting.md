@@ -8,7 +8,7 @@
 
 **Challenge**: Target customers with unsupported operating systems to migrate to compatible security products. Required sophisticated segmentation to separate migrate-able customers from those requiring different messaging.
 
-**Objective**: Create two distinct customer cohorts based on migration capability and implement A/B testing framework for campaign optimization.
+**Objective**: Create two distinct customer cohorts based on migration capability and implement A/B testing framework by creating a holdout group for campaign optimization.
 
 ## Technical Solution
 
@@ -29,17 +29,17 @@ CREATE OR REPLACE TEMPORARY TABLE prefiltered_targeting_customers_non_migrate AS
 
 WITH unsupported_os_cohort AS (
   -- Union multiple OS version tables  
-  SELECT customer_id, 'OS_VERSION_1' AS unsupported_os 
+  SELECT license_id, 'OS_VERSION_1' AS unsupported_os 
   FROM `company-data.product_data.migration_os_v1_customers`
   
   UNION ALL
   
-  SELECT customer_id, 'OS_VERSION_2' AS unsupported_os 
+  SELECT license_id, 'OS_VERSION_2' AS unsupported_os 
   FROM `company-data.product_data.migration_os_v2_customers`
   
   UNION ALL
   
-  SELECT customer_id, 'OS_VERSION_3' AS unsupported_os 
+  SELECT license_id, 'OS_VERSION_3' AS unsupported_os 
   FROM `company-data.product_data.migration_os_v3_customers`
 )
 
@@ -56,18 +56,18 @@ SELECT
     '-', 
     upper(c.subscription.country_code)
   ) as locale,
-  c.customer_id as customer_id,
+  c.license_id as psn,
   c.account_guid as guid,
   c.account.first_name,
   m.unsupported_os as dynamic_field,
   -- A/B testing variant assignment
   `company-exp.experiment_platform.variant_assignment`(
-    c.customer_id, 'customer_id', 'experiment-1', 2
+    c.license_id, 'license_id', 'experiment-1', 2
   ) as variant_id
 FROM
   `company-data.analytics.customer_table` c
 INNER JOIN unsupported_os_cohort m
-  ON c.customer_id = m.customer_id
+  ON c.license_id = m.license_id
 WHERE
   c.account_guid IS NOT NULL
   AND c.account.email_address IS NOT NULL
@@ -85,8 +85,8 @@ INSERT INTO `company-exp.experiment_platform.exposure_tracking`(
 SELECT
   'experiment-1' as experiment_id,
   variant_id,
-  'customer_id' AS unit_type,
-  customer_id AS unit_id
+  'license_id' AS unit_type,
+  license_id AS unit_id
 FROM prefiltered_targeting_customers_non_migrate
 ;
 
@@ -119,19 +119,19 @@ SELECT
     '-', 
     upper(e.subscription.country_code)
   ) as locale,
-  e.customer_id AS customer_id,
+  e.license_id AS psn,
   e.account_guid AS guid,
   e.account.first_name,
   -- Separate experiment for migrate-able cohort
   `company-exp.experiment_platform.variant_assignment`(
-    e.customer_id, 'customer_id', 'experiment-2', 2
+    e.license, 'license_id', 'experiment-2', 2
   ) AS variant_id
 FROM
   `company-data.analytics.customer_table` e
 INNER JOIN
   `company-marketing.product_data.migration_compatible_customers` a
 ON
-  e.customer_id = a.customer_id
+  e.license_id = a.license_id
 WHERE
   e.account_guid IS NOT NULL
   AND e.account.email_address IS NOT NULL
@@ -149,8 +149,8 @@ INSERT INTO `company-exp.experiment_platform.exposure_tracking`(
 SELECT
   'experiment-2' as experiment_id,
   variant_id,
-  'customer_id' AS unit_type,
-  customer_id AS unit_id
+  'license_id' AS unit_type,
+  license_id AS unit_id
 FROM prefiltered_targeting_customers_migrate
 ;
 
@@ -173,7 +173,7 @@ WHERE variant_id = 'b'
 ### 2. **A/B Testing Integration** 
 - Built-in experiment variant assignment using company experimentation platform
 - Proper exposure logging for statistical analysis
-- Filter logic to export only test variant (variant B)
+- Filter logic to create a holdout group by exporting only test variant (variant B)
 
 ### 3. **Data Quality Controls**
 - NULL checking for critical fields (account_guid, email_address)
@@ -182,13 +182,13 @@ WHERE variant_id = 'b'
 
 ### 4. **Production Pipeline Integration**
 - **SourceTree workflow**: GUI-based Git version control for SQL development with code review
-- **Airflow scheduling**: Automated daily execution with dependency management  
+- **Airflow scheduling**: Automated execution with dependency management  
 - **YAML configuration**: Parameterized job definitions for different cohorts
 - **SFTP automation**: Seamless data delivery to Salesforce Marketing Cloud
 
 ### 5. **Performance Optimization**
-- Temporal tables for memory efficiency
-- Strategic indexing via customer ID joins
+- Temporary tables for memory efficiency
+- Strategic indexing via license ID joins
 - Batch processing for large customer datasets
 
 ## Business Impact
@@ -214,4 +214,4 @@ WHERE variant_id = 'b'
 
 ---
 
-**Skills Demonstrated**: **Google Cloud Platform (GCP)**, **BigQuery**, **SourceTree**, **Git Version Control**, **Airflow**, **YAML**, **SFTP integration**, **Salesforce Marketing Cloud**, SQL optimization, A/B testing, customer segmentation, performance tuning, international compliance
+**Skills Demonstrated**: **Google Cloud Platform (GCP)**, **BigQuery**, **SourceTree**, **Git Version Control**, **Airflow**, **YAML**, **SFTP integration**, **Salesforce Marketing Cloud**, SQL optimization, A/B testing, customer segmentation, performance tuning, international compliance, holdout group testing
