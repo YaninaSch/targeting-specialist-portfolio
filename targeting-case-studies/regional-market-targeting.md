@@ -27,7 +27,7 @@ CREATE OR REPLACE TABLE
 -- Partner suppression logic with CRM marketing preferences  
 WITH partner_suppression AS (
   SELECT 
-    customer_id,
+    license_id,
     CASE 
       WHEN partner_name <> 'Company Corp - Referral' 
         AND partner_name IS NOT NULL 
@@ -38,7 +38,7 @@ WITH partner_suppression AS (
   FROM `company-data.analytics.order_table`
   -- Get most recent order per customer
   QUALIFY row_number() OVER(
-    PARTITION BY customer_id 
+    PARTITION BY license_id 
     ORDER BY order_date DESC
   ) = 1
 )   
@@ -56,18 +56,18 @@ SELECT
     '-', 
     upper(a.subscription.country_code)
   ) as locale,
-  a.customer_id as customer_id,
+  a.license_id as psn,
   a.account_guid as guid
 
 FROM `company-data.analytics.customer_table` a
 
 -- Join order data for partner and channel validation
 LEFT JOIN `company-data.analytics.order_table` b
-  ON a.customer_id = b.customer_id
+  ON a.license_id = b.license_id
 LEFT JOIN `company-data.analytics.subscription_order_table` c
-  ON a.customer_id = c.customer_id  
+  ON a.license_id = c.license_id  
 LEFT JOIN partner_suppression p
-  ON a.customer_id = p.customer_id
+  ON a.license_id = p.license_id
 
 WHERE
   -- Product eligibility: Consumer security products only
@@ -126,7 +126,7 @@ QUALIFY row_number() OVER(
 ### 3. **Geographic & Product Precision**
 - **Market Focus**: Configurable regional targeting (REGION_A)
 - **Product Scope**: Comprehensive consumer product inclusion list
-- **Channel Validation**: Specific order number prefix requirements (CH1%, CH2%, CH3%)
+- **Channel Validation**: Specific order number prefix requirements (CH1%, CH2%, CH3%) from different tables
 
 ### 4. **Customer Lifecycle Filtering**
 - **Activation Maturity**: Minimum X-day activation period
