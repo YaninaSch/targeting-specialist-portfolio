@@ -20,7 +20,7 @@ This section showcases complex customer segmentation and targeting strategies im
 **Project**: TICKET-003 & TICKET-004  
 **Challenge**: Dynamic timing-based targeting for product activation  
 **Solution**: T-minus expiration logic with feature-based segmentation  
-**Impact**: Improved activation rates through structured targeting logic.
+**Impact**: Improved activation rates through structured targeting logic
 
 ### 4. [Product Satisfaction Survey Targeting](./satisfaction-survey-targeting.md)
 **Project**: TICKET-005  
