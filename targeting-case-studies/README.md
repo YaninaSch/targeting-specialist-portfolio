@@ -8,25 +8,25 @@ This section showcases complex customer segmentation and targeting strategies im
 **Project**: TICKET-001  
 **Challenge**: Segment customers based on OS compatibility for product migration  
 **Solution**: Dual-cohort SQL logic with A/B testing integration  
-**Impact**: 25% improvement in migration rates
+**Impact**: Improved migration targeting through clearer customer segmentation
 
 ### 2. [Regional Market Promotional Campaign](./regional-market-targeting.md)  
 **Project**: TICKET-002  
 **Challenge**: Navigate complex partner suppression and regulatory compliance  
 **Solution**: Multi-table partner exclusion logic with CRM preference handling  
-**Impact**: 100% compliance while maximizing audience reach
+**Impact**: Supported compliant audience selection for regional campaigns
 
 ### 3. [Product Activation Recurring Campaigns](./product-activation-targeting.md)
 **Project**: TICKET-003 & TICKET-004  
 **Challenge**: Dynamic timing-based targeting for product activation  
 **Solution**: T-minus expiration logic with feature-based segmentation  
-**Impact**: 40% improvement in activation rates
+**Impact**: Improved activation rates through structured targeting logic.
 
 ### 4. [Product Satisfaction Survey Targeting](./satisfaction-survey-targeting.md)
 **Project**: TICKET-005  
 **Challenge**: Precise timing and geographic targeting for satisfaction surveys  
 **Solution**: Date-based filtering with multi-market compliance  
-**Impact**: Optimized survey response rates while maintaining quality
+**Impact**: Enabled more consistent survey targeting across markets
 
 ---
 
