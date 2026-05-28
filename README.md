@@ -12,8 +12,6 @@ I'm a Targeting Specialist from an **Email Development Team** with expertise in 
 - **Email Campaign Development**: Advanced email targeting logic, subscriber segmentation, and email campaign optimization
 - **Google Cloud Platform (GCP) & BigQuery**: Advanced SQL development for email targeting, subscriber data analysis, and email campaign performance
 - **Email Production Pipeline**: Working within established email campaign infrastructure using Airflow, YAML, and SFTP integration
-- **Email A/B Testing**: Email subject line testing, content optimization, send time optimization, and email performance analysis
-- **Email Marketing Automation**: Salesforce Marketing Cloud data extensions, email lifecycle management, and automated email targeting
 - **Email Analytics**: Email subscriber behavior analysis, email performance metrics, and predictive email targeting
 - **Email Compliance**: Multi-market email marketing regulations (GDPR, CAN-SPAM, etc.)
 
@@ -42,21 +40,21 @@ Performance analysis, optimization insights, and business impact metrics.
 - Developed dual-cohort targeting logic for migrate-able vs non-migrate-able customers
 - Implemented A/B testing framework with variant assignment
 - Created scalable **GCP BigQuery** solution handling 1M+ customer records with optimized query performance
-- **Impact**: Achieved 25% higher migration rate through precise targeting
+- **Impact**: Improved targeting precision for customer migration campaigns
 
 ### Regional Market Promotional Campaign (TICKET-002) 
 **Challenge**: Navigate complex partner suppression rules and regional compliance
 - Built comprehensive partner exclusion logic with CRM marketing preferences
 - Implemented multi-table joins across customer, purchase, and partner data
 - Ensured full regulatory compliance for international market requirements
-- **Impact**: Maintained 100% compliance while maximizing eligible audience
+- **Impact**: Supported compliant audience selection for regional promotional campaigns
 
 ### Product Activation Campaign (TICKET-003)
 **Challenge**: Create recurring targeting for multi-product activation campaigns
 - Developed dynamic expiration date logic with T-minus calculations
 - Implemented product feature detection and inclusion/exclusion logic
 - Built scalable solution for continuous campaign operation
-- **Impact**: 40% improvement in activation rates through precise timing
+- **Impact**: Improved activation rates through campaign targeting logic
 
 ---
 
@@ -80,7 +78,6 @@ Performance analysis, optimization insights, and business impact metrics.
 - Develop advanced **BigQuery SQL** queries processing millions of email subscribers with sub-second performance for **email marketing campaigns**
 - Work within established **email campaign infrastructure** using **SourceTree/Git**, **Airflow**, and **YAML** configurations for production email deployment
 - Integrate email targeting systems with **Salesforce Marketing Cloud** via **SFTP** data extensions for **email campaign execution**
-- Lead **email A/B testing** initiatives resulting in 15-30% performance improvements in email engagement
 - Build and optimize **email targeting pipelines** for real-time campaign deployment
 - Ensure **email marketing compliance** across 15+ international markets (GDPR, CAN-SPAM, etc.)
 - Collaborate with **Email Development Team** members and cross-functional teams on campaign optimization and automation
@@ -89,8 +86,8 @@ Performance analysis, optimization insights, and business impact metrics.
 
 ## Contact
 
-📧 [Professional Email](mailto:your.email@example.com)
-💼 [LinkedIn](https://linkedin.com/in/your-profile)
+📧 [Professional Email](mailto:yanina.scholz@yahoo.com)
+💼 [LinkedIn](https://linkedin.com/in/yanina-scholz)
 🔗 [Portfolio Repository](https://github.com/yanina-scholz/targeting-specialist-portfolio)
 
 ---
