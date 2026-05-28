@@ -106,7 +106,6 @@ marketing_reminders_enabled IS TRUE     -- Service reminders
 ## Business Impact
 
 ### Survey Performance
-- **Response Rates**: 35% higher response rates vs random timing
 - **Quality Feedback**: More relevant responses from optimally-timed outreach
 - **Customer Satisfaction**: Reduced survey fatigue through precise targeting
 - **Compliance**: Zero opt-in violations or customer complaints
